@@ -1,2 +1,0 @@
-# Smart-Crop-Yield-Prediction-and-Crop-Recommendation-System-Using-Machine-Learning
-This is a Machine Learning-based prediction system that uses the CatBoost algorithm to generate accurate results based on input data. This  includes data preprocessing, model training, and evaluation to ensure reliable performance. The project demonstrates a complete end-to-end machine learning workflow from data processing to deployment.
