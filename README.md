@@ -175,20 +175,7 @@ The project automatically selects the best performing model. During testing on a
 | Stacking Ensemble | 0.9901 | 2.1765 | 1.0539 | 10.48% |
 | Random Forest (GridSearch)| 0.9894 | 2.2490 | 1.1254 | 10.39% |
 
-### 📈 Output Visualizations
-The system automatically generates evaluation visualizations based on the best run.
 
-#### 1. Model Comparison
-![Model Comparison](visualization/outputs/model_comparison.png)
-
-#### 2. Actual vs Predicted Yield
-![Actual vs Predicted Yield](Smart&Crop&Intelligence&System/visualization/outputs/actual_vs_predicted.png)
-
-#### 3. Residual Analysis
-![Residual Analysis](visualization/outputs/residuals.png)
-
-#### 4. Feature Correlation EDA
-![Correlation Heatmap](visualization/outputs/correlation_heatmap.png)
 
 ---
 
