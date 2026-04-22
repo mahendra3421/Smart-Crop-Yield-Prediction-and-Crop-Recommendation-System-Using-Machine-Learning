@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Intelligence System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="hero">
+            <h1>🌾 Crop Intelligence System</h1>
+            <p>Advanced Crop Yield Prediction & Recommendation</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="switchTab('predict')">🌾 Yield Prediction</button>
+            <button class="tab-btn" onclick="switchTab('recommend')">💡 Crop Recommendation</button>
+        </nav>
+
+        <main class="content">
+            <!-- PREDICT TAB -->
+            <section id="predict" class="tab-content active">
+                <h2>🌾 Crop Yield Prediction</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🌿 Soil Nutrients</h3>
+                        <label>Nitrogen (N) [kg/ha]: <span id="N-val">90.0</span></label>
+                        <input type="range" id="N" min="0" max="300" value="90" step="0.5" oninput="updateVal('N')">
+                        
+                        <label>Phosphorus (P) [kg/ha]: <span id="P-val">45.0</span></label>
+                        <input type="range" id="P" min="0" max="200" value="45" step="0.5" oninput="updateVal('P')">
+                        
+                        <label>Potassium (K) [kg/ha]: <span id="K-val">43.0</span></label>
+                        <input type="range" id="K" min="0" max="250" value="43" step="0.5" oninput="updateVal('K')">
+                        
+                        <label>Soil pH: <span id="pH-val">6.5</span></label>
+                        <input type="range" id="pH" min="3.5" max="9.5" value="6.5" step="0.05" oninput="updateVal('pH')">
+                    </div>
+
+                    <div class="card">
+                        <h3>🌦️ Weather</h3>
+                        <label>Temperature (°C): <span id="temp-val">25.0</span></label>
+                        <input type="range" id="temp" min="-10" max="55" value="25" step="0.1" oninput="updateVal('temp')">
+                        
+                        <label>Rainfall (mm/yr): <span id="rain-val">900.0</span></label>
+                        <input type="range" id="rain" min="0" max="5000" value="900" step="10" oninput="updateVal('rain')">
+                        
+                        <label>Humidity (%): <span id="hum-val">65.0</span></label>
+                        <input type="range" id="hum" min="0" max="100" value="65" step="0.5" oninput="updateVal('hum')">
+
+                        <label>Solar Radiation (MJ/m²): <span id="solar-val">18.0</span></label>
+                        <input type="range" id="solar" min="5" max="30" value="18" step="0.1" oninput="updateVal('solar')">
+                    </div>
+
+                    <div class="card">
+                        <h3>🌾 Crop & Field</h3>
+                        <label>Crop:</label>
+                        <select id="cropSelect"></select>
+                        
+                        <label>Area (ha):</label>
+                        <input type="number" id="area" min="1" max="500000" value="1000">
+
+                        <label>Pesticide Usage (kg/ha): <span id="pest-val">5.0</span></label>
+                        <input type="range" id="pest" min="0" max="50" value="5" step="0.1" oninput="updateVal('pest')">
+
+                        <label>Season:</label>
+                        <select id="seasonSelect">
+                            <option value="Kharif">Kharif</option>
+                            <option value="Rabi">Rabi</option>
+                            <option value="Zaid">Zaid</option>
+                            <option value="Whole Year">Whole Year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" onclick="predictYield()">🚀 Predict Yield</button>
+                
+                <div id="predict-result" class="result-box hidden">
+                    <p>Estimated Crop Yield</p>
+                    <h1 id="yield-output">-- t/ha</h1>
+                    <p>Category: <strong id="yield-cat">--</strong> &nbsp;|&nbsp; Total Production: <strong id="prod-output">-- tonnes</strong></p>
+                </div>
+            </section>
+
+            <!-- RECOMMEND TAB -->
+            <section id="recommend" class="tab-content">
+                <h2>💡 Smart Crop Recommendation</h2>
+                <p>Enter your soil and weather conditions to get the Top 3 recommended crops.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🌿 Soil Profile</h3>
+                        <label>Nitrogen (N): <span id="rN-val">90.0</span></label>
+                        <input type="range" id="rN" min="0" max="300" value="90" oninput="updateVal('rN')">
+                        
+                        <label>Phosphorus (P): <span id="rP-val">42.0</span></label>
+                        <input type="range" id="rP" min="0" max="200" value="42" oninput="updateVal('rP')">
+                        
+                        <label>Potassium (K): <span id="rK-val">43.0</span></label>
+                        <input type="range" id="rK" min="0" max="250" value="43" oninput="updateVal('rK')">
+                        
+                        <label>Soil pH: <span id="rpH-val">6.5</span></label>
+                        <input type="range" id="rpH" min="3.5" max="9.5" value="6.5" step="0.05" oninput="updateVal('rpH')">
+                    </div>
+
+                    <div class="card">
+                        <h3>🌦️ Climate</h3>
+                        <label>Temperature (°C): <span id="rtemp-val">25.0</span></label>
+                        <input type="range" id="rtemp" min="-10" max="55" value="25" step="0.1" oninput="updateVal('rtemp')">
+                        
+                        <label>Rainfall (mm/yr): <span id="rrain-val">900.0</span></label>
+                        <input type="range" id="rrain" min="0" max="5000" value="900" step="10" oninput="updateVal('rrain')">
+                        
+                        <label>Humidity (%): <span id="rhum-val">65.0</span></label>
+                        <input type="range" id="rhum" min="0" max="100" value="65" step="0.5" oninput="updateVal('rhum')">
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="recommendCrops()">🌱 Get Recommendations</button>
+
+                <div id="rec-results" class="rec-grid hidden"></div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
