@@ -1,6 +1,6 @@
 # Crop Yield Prediction & Recommendation System
 
-**🌐 Live Demo:** [https://project-8jp10trpf-mahendravarmakare-5907s-projects.vercel.app/](https://project-8jp10trpf-mahendravarmakare-5907s-projects.vercel.app/)
+**🌐 Live Demo:** https://project-mahendravarmakare-5907-mahendravarmakare-5907s-projects.vercel.app?_vercel_share=wyJROWGAMCXWJl6VpVgNMxgD9CWm0l9C
 
 > **Research-Grade Implementation** — An advanced ML system that improves upon the MAWT-SVM baseline paper with multi-model ensembling, explainable AI, and an interactive web application.
 
